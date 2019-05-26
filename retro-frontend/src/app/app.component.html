@@ -1,0 +1,40 @@
+<!--The content below is only a placeholder and can be replaced.-->
+<div style="text-align:center">
+  <div class="header">
+    <a routerLink="/">
+      <img src="../assets/logo-retro-board.png" alt="Retro Board Logo"/>
+    </a>
+    <h1>
+      Professional {{ title }} for your Team!
+    </h1>
+    <span class="command-link"
+          *ngIf="!user"
+          (click)="socialSignIn('google')">Login</span>
+    <div *ngIf="user" class="user-name">
+      <span>Hello, {{user.firstName}}!</span>
+      <span class="command-link" (click)="socialSignOut()">Logout</span>
+    </div>
+  </div>
+  <div class="nav-bar">
+    <div *ngIf="user" class="hide-desktop nav-bar-item current-retro-mobile" (click)="toggleNavBar()">
+      <span>&#x2630;</span>
+      <span >{{retroService.getCurrentRetro().date}} ({{retroService.getCurrentRetro().team}})</span>
+    </div>
+    <nav *ngIf="user" [ngClass]="{'collapse-mobile': isNavBarHidden}">
+      <a class="nav-bar-item" routerLink="/board">Board</a>
+      <a class="nav-bar-item" routerLink="/add-retro-item">Add Retro-Item</a>
+      <a class="nav-bar-item" routerLink="/add-action-item">Add Action-Item</a>
+      <a class="nav-bar-item" routerLink="/retros">Retros</a>
+    </nav>
+    <div *ngIf="retroService.getCurrentRetro() && user" class="collapse-mobile">
+      <span class="nav-bar-item">Current Retro:</span>
+      <span class="nav-bar-item">{{retroService.getCurrentRetro().date}} ({{retroService.getCurrentRetro().team}})</span>
+    </div>
+  </div>
+  <div>
+    <router-outlet *ngIf="user"></router-outlet>
+    <p *ngIf="!user">To proceed, please log in.</p>
+  </div>
+</div>
+
+

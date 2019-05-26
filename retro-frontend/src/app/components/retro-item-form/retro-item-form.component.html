@@ -1,0 +1,19 @@
+<div class="container">
+  <h2>Add new Retro Item</h2>
+  <form #retroItemForm="ngForm" (ngSubmit)="onSubmit()">
+    <div class="form-group">
+      <label for="title">Title</label>
+      <input type="text" id="title" class="form-control" [(ngModel)]="retroItem.title" name="title" required>
+    </div>
+    <div class="form-group">
+      <label for="item-type">Type</label>
+      <select class="form-control" id="item-type"
+              required
+              [(ngModel)]="retroItem.type" name="item-type">
+        <option *ngFor="let t of types" [value]="t">{{t}}</option>
+      </select>
+    </div>
+    <button type="button" class="btn btn-default" (click)="newRetroItem(); retroItemForm.reset()">Reset</button>
+    <button type="submit" class="btn btn-success" [disabled]="!retroItemForm.form.valid">Submit</button>
+  </form>
+</div>

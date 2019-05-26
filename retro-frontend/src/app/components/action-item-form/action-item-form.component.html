@@ -1,0 +1,15 @@
+<div class="container">
+  <h2>Add new Action Item</h2>
+  <form #actionItemForm="ngForm" (ngSubmit)="onSubmit()">
+    <div class="form-group">
+      <label for="title">Title</label>
+      <input type="text" id="title" class="form-control" [(ngModel)]="actionItem.title" name="title" required>
+    </div>
+    <div class="form-group">
+      <label for="assignee">Assignee</label>
+      <input type="text" id="assignee" class="form-control" [(ngModel)]="actionItem.assignee" name="assignee" required>
+    </div>
+    <button type="button" class="btn btn-default" (click)="newActionItem(); actionItemForm.reset()">Reset</button>
+    <button type="submit" class="btn btn-success" [disabled]="!actionItemForm.form.valid">Submit</button>
+  </form>
+</div>

@@ -1,0 +1,26 @@
+<div class="container">
+  <h2>Create new retro</h2>
+  <form #retroForm="ngForm" (ngSubmit)="onSubmit()">
+    <div class="form-group">
+      <label for="team">Team name</label>
+      <input [(ngModel)]="retro.team"
+             class="form-control" id="team"
+             name="team" required type="text">
+    </div>
+    <button type="button" class="btn btn-default" (click)="newRetro(); retroForm.reset()">Reset</button>
+    <button type="submit" class="btn btn-success" [disabled]="!retroForm.form.valid">Submit</button>
+  </form>
+</div>
+
+<div>
+  <h2>Retro history</h2>
+  <ul>
+    <li *ngFor="let retro of retroService.retros"
+        (click)="selectRetro(retro.id)"
+        class="retro-select"
+    >
+      <h3>{{retro.date}}</h3>
+      <span>({{retro.team}})</span>
+    </li>
+  </ul>
+</div>

@@ -1,0 +1,8 @@
+.retro-select{
+  cursor: pointer;
+}
+
+.retro-select:hover {
+  background-color: #E7DFC6;
+  transition: 0.5s;
+}

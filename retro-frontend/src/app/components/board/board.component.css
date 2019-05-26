@@ -1,0 +1,28 @@
+:host {
+  display: flex;
+  flex-direction: column;
+  padding-bottom: 40px;
+}
+
+app-retro-item-column {
+  border-bottom: 1px solid #DBD5B2;
+}
+
+
+@media screen and (min-width: 40em) {
+  :host {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+  }
+
+  app-retro-item-column {
+    border: none;
+    padding-left: 4px;
+    padding-right: 4px;
+  }
+  app-action-item-column {
+    padding-left: 4px;
+    padding-right: 4px;
+  }
+}
